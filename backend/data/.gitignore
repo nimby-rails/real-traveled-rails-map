@@ -1,0 +1,8 @@
+#Members folder holds the data uploaded by each member, not included in the git repo.
+#structure is as follows:
+# - Members->[Discord ID]->source->[file],
+# - Members->[Discord username/symlink to discord ID folder]->source->[file]
+# - Members->[Discord ID]->combined.klm
+# - Members->[Discord ID]->manifest.json, holds data about folder schema version and possibly user settings in the future.
+members/*
+!members/

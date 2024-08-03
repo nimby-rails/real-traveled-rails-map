@@ -1,0 +1,2 @@
+shell_exec("node /var/www/global/js/merge.js");
+shell_exec("find mattherhorn/source/ -name \"*.2019 *\" > mattherhorn/2019.txt && find mattherhorn/source/ -name \"*.2020 *\" > mattherhorn/2020.txt && find mattherhorn/source/ -name \"*.2021 *\" > mattherhorn/2021.txt && find mattherhorn/source/ -name \"*.2022 *\" > mattherhorn/2022.txt && find mattherhorn/source/ -name \"*.2023 *\" > mattherhorn/2023.txt && find mattherhorn/source/ -name \"*.2024 *\" > mattherhorn/2024.txt");
