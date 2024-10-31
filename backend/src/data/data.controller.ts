@@ -3,7 +3,7 @@ import { Controller, Get } from '@nestjs/common';
 import { KmlToGeojson } from 'kml-to-geojson';
 import { pathUtil } from '../utils/pathUtil';
 
-@Controller("api/data")
+@Controller('data')
 export class DataController {
   kmlToGeojson: KmlToGeojson;
 
@@ -11,13 +11,13 @@ export class DataController {
     this.kmlToGeojson = new KmlToGeojson();
   }
 
-  @Get("global")
+  @Get('global')
   async getGlobalGeojson(): Promise<string> {
     const filePath = pathUtil.getFilePath('NRR.geojson');
     return await fs.readFile(filePath, 'utf8');
   }
 
-  @Get("global-from-kml")
+  @Get('global-from-kml')
   async getGlobalGeojsonFromKml(): Promise<any> {
     const filePath = pathUtil.getFilePath('NRR.kml');
 

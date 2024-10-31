@@ -1,27 +1,49 @@
-<script setup lang="ts">
-import {onMounted} from 'vue';
-import "leaflet/dist/leaflet.css";
-import * as L from 'leaflet';
-
-let initialMap: L.Map;
-
-onMounted(async () => {
-  initialMap = L.map('map').setView([48.0, 23.0], 6);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(initialMap);
-  const response = await fetch("http://localhost:3000/api/data/global");
-  const geojson = await response.json();
-  L.geoJSON(geojson).addTo(initialMap);
-});
+<script lang="ts" setup>
+import { RouterView, RouterLink } from 'vue-router';
 </script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
 <template>
-  <h1>
-    Nimby Real Rail Map
-  </h1>
-
-  <div id="map"></div>
+  <div class="app-container">
+    <nav class="navbar">
+      <RouterLink :to="{name: 'home'}">Home</RouterLink>
+      <RouterLink :to="{name: 'map'}">Map</RouterLink>
+    </nav>
+    <div class="content">
+      <RouterView/>
+    </div>
+  </div>
 </template>
+<style lang="scss">
+  .app-container {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "Navigation"
+    "Content";
+  }
+
+  .navbar {
+    background: #272727;
+    grid-area: Navigation;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+
+    &a {
+      color: white;
+      font-size: 1.25rem;
+      text-display: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .content {
+    grid-area: Content;
+  }
+</style>
