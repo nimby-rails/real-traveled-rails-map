@@ -30,12 +30,18 @@ import { RouterView, RouterLink } from 'vue-router';
     grid-area: Navigation;
     display: flex;
     flex-direction: row;
-    gap: .5rem;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 1rem;
 
-    &a {
+    & a {
       color: white;
       font-size: 1.25rem;
-      text-display: none;
+      text-decoration: none;
+
+      &.router-link-active {
+        color: cornflowerblue;
+      }
 
       &:hover {
         text-decoration: underline;
