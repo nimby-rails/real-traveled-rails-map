@@ -6,3 +6,6 @@
 # - Members->[Discord ID]->manifest.json, holds data about folder schema version and possibly user settings in the future.
 members/*
 !members/
+
+NRR.kml
+NRR.geojson
