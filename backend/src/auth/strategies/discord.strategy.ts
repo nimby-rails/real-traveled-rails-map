@@ -29,7 +29,7 @@ export class DiscordStrategy extends PassportStrategy(Strategy, 'discord') {
         cb: VerifyCallback,
       ) => {
         const user: User = {
-          platform: 'Discord',
+          platform: 'discord',
           id: profile.id,
           username: profile.username,
         };

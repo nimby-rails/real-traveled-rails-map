@@ -10,7 +10,7 @@ export class SessionController {
   @Get('login-callback/discord')
   @UseGuards(DiscordAuthGuard)
   loginCallbackDiscord(@Request() req, @Response() res) {
-    res.cookie('token', req.user, { signed: true });
+    res.cookie('token', req.user, { signed: true, httpOnly: true });
     return res.redirect('/dashboard');
   }
 

@@ -1,15 +1,16 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
-import discordOauthConfig from '../config/discord-oauth.config';
 import { DiscordStrategy } from './strategies/discord.strategy';
 import { SessionController } from './session.controller';
 import { CookieStrategy } from './strategies/cookie.strategy';
+import authConfig from '../config/auth.config';
+import discordOauthConfig from '../config/discord-oauth.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [discordOauthConfig],
+      load: [discordOauthConfig, authConfig],
     }),
     PassportModule,
   ],
