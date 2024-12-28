@@ -1,8 +1,10 @@
 #Members folder holds the data uploaded by each member, not included in the git repo.
 #structure is as follows:
-# - Members->[Discord ID]->source->[file],
-# - Members->[Discord username/symlink to discord ID folder]->source->[file]
-# - Members->[Discord ID]->combined.klm
-# - Members->[Discord ID]->manifest.json, holds data about folder schema version and possibly user settings in the future.
+# - members->[ID]->source->[file],
+# - by_username->[username] (symlink to members->[ID] folder)
+# - Members->[ID]->combined.klm (contains all data from that user combined in one file)
+# - Members->[ID]->manifest.json, holds data about folder schema version, user identity data, and profile settings.
 members/*
 !members/
+by_username/*
+!by_username
