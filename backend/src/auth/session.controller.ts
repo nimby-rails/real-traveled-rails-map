@@ -1,6 +1,5 @@
 import { Controller, Get, Request, Response, UseGuards } from '@nestjs/common';
 import { DiscordAuthGuard } from './guards/discord-auth.guard';
-import { IsLoggedInGuard } from './guards/logged-in.guard';
 
 @Controller('session')
 export class SessionController {
@@ -12,13 +11,7 @@ export class SessionController {
   @UseGuards(DiscordAuthGuard)
   loginCallbackDiscord(@Request() req, @Response() res) {
     res.cookie('token', req.user, { signed: true });
-    return res.send(req.user);
-  }
-
-  @Get('test')
-  @UseGuards(IsLoggedInGuard)
-  test(@Request() req) {
-    return req.user;
+    return res.redirect('/dashboard');
   }
 
   @Get('logout')
